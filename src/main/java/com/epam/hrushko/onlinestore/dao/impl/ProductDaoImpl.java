@@ -69,7 +69,6 @@ public class ProductDaoImpl extends BaseDaoImpl implements ProductDao {
 
     @Override
     public void updateById(int id, Product product) throws DaoException {
-        System.out.println(product + " " + id);
         update(UPDATE1, product.getCategoryId(), product.getName(),
                 product.getDescription(), product.getPrice(),
                 product.isStatus(), product.getPhoto(), id);

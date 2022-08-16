@@ -3,6 +3,9 @@ package com.epam.hrushko.onlinestore.service.validate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Price validator
+ */
 public class PriceValidator implements Validator {
     private static final String PRICE = "^\\d+\\.\\d{0,2}$";
 

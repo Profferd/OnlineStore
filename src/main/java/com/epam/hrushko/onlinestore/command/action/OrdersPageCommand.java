@@ -19,6 +19,9 @@ import com.epam.hrushko.onlinestore.service.impl.UserOrderServiceImpl;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
+/**
+ * Class that show order page
+ */
 public class OrdersPageCommand implements Command {
     private static final String PAGE = "WEB-INF/view/orders.jsp";
     private static final String ERROR_PAGE = "WEB-INF/view/error.jsp";
@@ -28,6 +31,12 @@ public class OrdersPageCommand implements Command {
     private static final String CATEGORIES = "category";
     private static final String USER = "user";
 
+    /**
+     * Executes and show all orders
+     * @param manager
+     * @param response
+     * @return Command Result
+     */
     @Override
     public CommandResult execute(RequestManager manager, HttpServletResponse response) {
         Requests requestContext = manager.createContext();

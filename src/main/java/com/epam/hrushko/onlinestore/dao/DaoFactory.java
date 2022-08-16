@@ -2,6 +2,9 @@ package com.epam.hrushko.onlinestore.dao;
 
 import com.epam.hrushko.onlinestore.dao.impl.*;
 
+/**
+ * DAO factory.
+ */
 public class DaoFactory {
     private final UserDao userDao = new UserDaoImpl();
     private final CategoryDaoImpl categoryDao = new CategoryDaoImpl();

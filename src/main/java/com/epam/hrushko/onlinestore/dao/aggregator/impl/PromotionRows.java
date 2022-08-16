@@ -6,7 +6,16 @@ import com.epam.hrushko.onlinestore.entity.Promotion;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * Class for mapping promotion rows
+ */
 public class PromotionRows implements RowAggregator<Promotion> {
+    /**
+     * Mapping all rows of promotion entity
+     * @param resultSet
+     * @return promotion with all information
+     * @throws SQLException
+     */
     @Override
     public Promotion aggregate(ResultSet resultSet) throws SQLException {
         return new Promotion(resultSet.getInt("id"),

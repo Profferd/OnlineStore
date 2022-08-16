@@ -3,6 +3,9 @@ package com.epam.hrushko.onlinestore.service.validate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Phone validator
+ */
 public class PhoneValidator implements Validator {
     private static final String PHONE = "^[0-9]{10,13}$";
 

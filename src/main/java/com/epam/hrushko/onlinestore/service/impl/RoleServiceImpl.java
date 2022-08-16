@@ -12,9 +12,18 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.Optional;
 
+/**
+ * Role service class
+ */
 public class RoleServiceImpl implements RoleService {
     private static final Logger LOGGER = LogManager.getLogger();
 
+    /**
+     * Find Role by od
+     * @param roleId
+     * @return role
+     * @throws ServiceException
+     */
     @Override
     public Optional<Role> findById(int roleId) throws ServiceException {
         try {

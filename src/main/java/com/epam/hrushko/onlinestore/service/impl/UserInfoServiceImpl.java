@@ -7,12 +7,26 @@ import com.epam.hrushko.onlinestore.entity.UserInfo;
 import com.epam.hrushko.onlinestore.exceptions.DaoException;
 import com.epam.hrushko.onlinestore.exceptions.ServiceException;
 import com.epam.hrushko.onlinestore.service.UserInfoService;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * User information service class
+ */
 public class UserInfoServiceImpl implements UserInfoService {
+    private static final Logger LOGGER = LogManager.getLogger();
+
+    /**
+     * Find user information by id
+     * @param userInfoId
+     * @return user information
+     * @throws ServiceException
+     */
     @Override
     public Optional<UserInfo> readById(int userInfoId) throws ServiceException {
         try {
@@ -21,11 +35,17 @@ public class UserInfoServiceImpl implements UserInfoService {
             userInfo = userInfoDao.read(userInfoId);
             return userInfo;
         } catch (DaoException e) {
-            //logger
+            LOGGER.log(Level.ERROR, e.getMessage());
             throw new ServiceException(e.getMessage(), e);
         }
     }
 
+    /**
+     * Find users information by users
+     * @param users
+     * @return all user info
+     * @throws ServiceException
+     */
     @Override
     public List<UserInfo> readFromUsers(List<User> users) throws ServiceException {
         List<UserInfo> userInfos = new LinkedList<>();
@@ -40,7 +60,7 @@ public class UserInfoServiceImpl implements UserInfoService {
                 }
             }
         } catch (ServiceException e) {
-            //logger
+            LOGGER.log(Level.ERROR, e.getMessage());
             throw new ServiceException(e.getMessage(), e);
         }
         return userInfos;

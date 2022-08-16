@@ -8,9 +8,18 @@ import com.epam.hrushko.onlinestore.command.request.Requests;
 
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * Class that show sign up page
+ */
 public class SignUpPageCommand implements Command {
     private static final String PAGE = "WEB-INF/view/signup.jsp";
 
+    /**
+     * Executing and show sign up page
+     * @param manager
+     * @param response
+     * @return
+     */
     @Override
     public CommandResult execute(RequestManager manager, HttpServletResponse response) {
         Requests requestContext = manager.createContext();

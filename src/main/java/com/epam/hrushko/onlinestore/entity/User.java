@@ -1,5 +1,8 @@
 package com.epam.hrushko.onlinestore.entity;
 
+/**
+ * User entity
+ */
 public class User {
     private int id;
     private int userInfoId;

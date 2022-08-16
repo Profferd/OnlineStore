@@ -17,6 +17,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Class that show product page editor(if you are administrator)
+ */
 public class EditProductPageCommand implements Command {
     private static final String PAGE = "WEB-INF/view/editProduct.jsp";
     private static final String ERROR_PAGE = "WEB-INF/view/error.jsp";
@@ -25,6 +28,13 @@ public class EditProductPageCommand implements Command {
     private static final String PRODUCT = "product";
     private static final String CATEGORY = "category";
 
+    /**
+     * Executes and show product page editor to administrator
+     * Administrator can change all parameters of product
+     * @param manager
+     * @param response
+     * @return
+     */
     @Override
     public CommandResult execute(RequestManager manager, HttpServletResponse response) {
         Requests requestContext = manager.createContext();

@@ -14,12 +14,26 @@ import com.epam.hrushko.onlinestore.service.ProductService;
 import com.epam.hrushko.onlinestore.service.validate.IdValidator;
 import com.epam.hrushko.onlinestore.service.validate.PriceValidator;
 import com.epam.hrushko.onlinestore.service.validate.Validator;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Product service class
+ */
 public class ProductServiceImpl implements ProductService {
+    private static final Logger LOGGER = LogManager.getLogger();
+
+    /**
+     * Find product by category id
+     * @param id
+     * @return all product
+     * @throws ServiceException
+     */
     @Override
     public List<Product> readByCategory(int id) throws ServiceException {
         try {
@@ -28,11 +42,17 @@ public class ProductServiceImpl implements ProductService {
             result = productDao.readByCategory(id);
             return result;
         } catch (DaoException e) {
-            //logger
+            LOGGER.log(Level.ERROR, e.getMessage());
             throw new ServiceException(e.getMessage(), e);
         }
     }
 
+    /**
+     * Find product by id
+     * @param id
+     * @return product
+     * @throws ServiceException
+     */
     @Override
     public Optional<Product> readById(int id) throws ServiceException {
         try {
@@ -41,11 +61,17 @@ public class ProductServiceImpl implements ProductService {
             result = productDao.readById(id);
             return result;
         } catch (DaoException e) {
-            //logger
+            LOGGER.log(Level.ERROR, e.getMessage());
             throw new ServiceException(e.getMessage(), e);
         }
     }
 
+    /**
+     * Find all product by orders
+     * @param orders
+     * @return products
+     * @throws ServiceException
+     */
     @Override
     public List<Product> readFromOrders(List<Order> orders) throws ServiceException {
         List<Product> products = new LinkedList<>();
@@ -61,6 +87,17 @@ public class ProductServiceImpl implements ProductService {
         return products;
     }
 
+    /**
+     * Create new product
+     * @param productName
+     * @param photo
+     * @param priceString
+     * @param categoryName
+     * @param status
+     * @param description
+     * @return created or not
+     * @throws ServiceException
+     */
     @Override
     public boolean create(String productName, String photo, String priceString, String categoryName, boolean status, String description) throws ServiceException {
         if (productName == null || photo == null || categoryName == null || description == null) {
@@ -91,11 +128,24 @@ public class ProductServiceImpl implements ProductService {
 
             return true;
         } catch (DaoException e) {
-            //logger
+            LOGGER.log(Level.ERROR, e.getMessage());
             throw new ServiceException(e.getMessage(), e);
         }
     }
 
+    /**
+     * Update product
+     * @param productIdString
+     * @param productName
+     * @param photo
+     * @param priceString
+     * @param categoryName
+     * @param status
+     * @param description
+     * @param promotionIdString
+     * @return updated or not
+     * @throws ServiceException
+     */
     @Override
     public boolean update(String productIdString, String productName, String photo, String priceString, String categoryName, boolean status, String description, String promotionIdString) throws ServiceException {
         if (productIdString == null || productName == null || photo == null || priceString == null ||
@@ -140,11 +190,17 @@ public class ProductServiceImpl implements ProductService {
 
             return true;
         } catch (DaoException e) {
-            //logger
+            LOGGER.log(Level.ERROR, e.getMessage());
             throw new ServiceException(e.getMessage(), e);
         }
     }
 
+    /**
+     * Get category id by name
+     * @param categoryName
+     * @return id
+     * @throws ServiceException
+     */
     private int getCategoryId(String categoryName) throws ServiceException {
         try {
             CategoryDao categoryDao = DaoFactory.getInstance().getCategoryDao();
@@ -160,7 +216,7 @@ public class ProductServiceImpl implements ProductService {
             }
             return categoryId;
         } catch (DaoException e) {
-            //logger
+            LOGGER.log(Level.ERROR, e.getMessage());
             throw new ServiceException(e.getMessage(), e);
         }
     }

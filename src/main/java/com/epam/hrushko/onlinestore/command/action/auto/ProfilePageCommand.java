@@ -18,6 +18,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Class that show Profile page
+ */
 public class ProfilePageCommand implements Command {
     private static final String PAGE = "WEB-INF/view/profile.jsp";
     private static final String ERROR_PAGE = "WEB-INF/view/error.jsp";
@@ -25,6 +28,12 @@ public class ProfilePageCommand implements Command {
     private static final String USER_INFORMATION = "userInfo";
     private static final String CATEGORIES = "category";
 
+    /**
+     * Executing and showing profile page
+     * @param manager
+     * @param response
+     * @return Command Result
+     */
     @Override
     public CommandResult execute(RequestManager manager, HttpServletResponse response) {
         Requests requestContext = manager.createContext();

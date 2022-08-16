@@ -13,12 +13,21 @@ import com.epam.hrushko.onlinestore.service.impl.CategoryServiceImpl;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
+/**
+ * Class that show home page command
+ */
 public class HomePageCommand implements Command {
     private static final String PAGE = "WEB-INF/view/home.jsp";
     private static final String ERROR = "WEB-INF/view/error.jsp";
     private static final String CATEGORIES = "category";
     private static final String PAGES = "pages";
 
+    /**
+     * executing and show home page
+     * @param manager
+     * @param response
+     * @return
+     */
     @Override
     public CommandResult execute(RequestManager manager, HttpServletResponse response) {
         Requests requestContext = manager.createContext();

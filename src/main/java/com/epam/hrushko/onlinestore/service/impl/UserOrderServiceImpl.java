@@ -12,6 +12,9 @@ import com.epam.hrushko.onlinestore.service.UserOrderService;
 import com.epam.hrushko.onlinestore.service.validate.MonthValidator;
 import com.epam.hrushko.onlinestore.service.validate.Validator;
 import com.epam.hrushko.onlinestore.service.validate.YearValidator;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -20,7 +23,11 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * User order service class
+ */
 public class UserOrderServiceImpl implements UserOrderService {
+    private static final Logger LOGGER = LogManager.getLogger();
     @Override
     public Optional<UserOrder> readById(int userOrderId) throws ServiceException {
         try {
@@ -30,7 +37,7 @@ public class UserOrderServiceImpl implements UserOrderService {
             System.out.println(result);
             return result;
         } catch (DaoException e) {
-            //logger
+            LOGGER.log(Level.ERROR, e.getMessage());
             throw new ServiceException(e.getMessage(), e);
         }
     }
@@ -43,7 +50,7 @@ public class UserOrderServiceImpl implements UserOrderService {
             result = userOrderDao.findByStatus(status);
             return result;
         } catch (DaoException e) {
-            //logger
+            LOGGER.log(Level.ERROR, e.getMessage());
             throw new ServiceException(e.getMessage(), e);
         }
     }
@@ -59,7 +66,7 @@ public class UserOrderServiceImpl implements UserOrderService {
             userOrderDao.updateStatus(userOrderId, status);
             return true;
         } catch (DaoException e) {
-            //logger
+            LOGGER.log(Level.ERROR, e.getMessage());
             throw new ServiceException(e.getMessage(), e);
         }
     }
@@ -89,7 +96,7 @@ public class UserOrderServiceImpl implements UserOrderService {
             }
             return true;
         } catch (ParseException | DaoException e) {
-            //logger.
+            LOGGER.log(Level.ERROR, e.getMessage());
             throw new ServiceException(e.getMessage(), e);
         }
     }

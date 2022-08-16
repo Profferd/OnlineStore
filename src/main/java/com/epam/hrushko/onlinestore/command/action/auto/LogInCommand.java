@@ -20,6 +20,9 @@ import org.apache.logging.log4j.Logger;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Optional;
 
+/**
+ * Class that execute log in command
+ */
 public class LogInCommand implements Command {
     private static final Logger LOGGER = LogManager.getLogger();
 
@@ -32,6 +35,14 @@ public class LogInCommand implements Command {
     private static final String ROLE = "role";
     private static final String ERROR_MESSAGE = "error";
 
+    /**
+     * executing log in
+     * if user is present redirecting to home page
+     * if not show up error message and return to log in
+     * @param manager
+     * @param response
+     * @return redirect or forward to some page
+     */
     @Override
     public CommandResult execute(RequestManager manager, HttpServletResponse response) {
         Requests requestContext = manager.createContext();

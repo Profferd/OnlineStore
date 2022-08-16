@@ -13,11 +13,20 @@ import com.epam.hrushko.onlinestore.service.impl.CategoryServiceImpl;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
+/**
+ * Class that show product page adder to administrator
+ */
 public class AddProductPageCommand implements Command {
     private static final String PAGE = "WEB-INF/view/addProduct.jsp";
     private static final String ERROR_PAGE = "WEB-INF/view/error.jsp";
     private static final String CATEGORIES = "category";
 
+    /**
+     * Executes and show product adding page for administrator
+     * @param manager
+     * @param response
+     * @return
+     */
     @Override
     public CommandResult execute(RequestManager manager, HttpServletResponse response) {
         Requests requestContext = manager.createContext();

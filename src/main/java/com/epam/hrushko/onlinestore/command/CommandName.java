@@ -1,5 +1,8 @@
 package com.epam.hrushko.onlinestore.command;
 
+/**
+ * Class that contain all commands
+ */
 public class CommandName {
     public static final String DEFAULT_COMMAND = "default";
     public static final String HOME_COMMAND = "home";

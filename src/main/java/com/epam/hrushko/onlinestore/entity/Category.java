@@ -2,6 +2,9 @@ package com.epam.hrushko.onlinestore.entity;
 
 import java.util.Objects;
 
+/**
+ * Category entity
+ */
 public class Category {
     private int id;
     private String category;

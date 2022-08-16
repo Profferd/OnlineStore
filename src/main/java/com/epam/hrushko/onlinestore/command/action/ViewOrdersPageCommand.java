@@ -13,6 +13,9 @@ import com.epam.hrushko.onlinestore.service.impl.*;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
+/**
+ * Class that show all orders page
+ */
 public class ViewOrdersPageCommand implements Command {
     private static final String PAGE = "WEB-INF/view/viewOrder.jsp";
     private static final String ERROR_PAGE = "WEB-INF/view/error.jsp";
@@ -24,6 +27,12 @@ public class ViewOrdersPageCommand implements Command {
     private static final String USER_INFORMATION = "userInfo";
     private static final String EXPECTED = "pending";
 
+    /**
+     * Executes and show all user orders on the page
+     * @param manager
+     * @param response
+     * @return Command Result
+     */
     @Override
     public CommandResult execute(RequestManager manager, HttpServletResponse response) {
         Requests requestContext = manager.createContext();

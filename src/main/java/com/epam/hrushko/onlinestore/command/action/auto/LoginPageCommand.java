@@ -8,9 +8,18 @@ import com.epam.hrushko.onlinestore.command.request.Requests;
 
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * Class that show log in page
+ */
 public class LoginPageCommand implements Command {
     private static final String PAGE = "WEB-INF/view/login.jsp";
 
+    /**
+     * executing and show log in page
+     * @param manager
+     * @param response
+     * @return command result
+     */
     @Override
     public CommandResult execute(RequestManager manager, HttpServletResponse response) {
         Requests requestContext = manager.createContext();

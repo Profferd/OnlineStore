@@ -3,6 +3,9 @@ package com.epam.hrushko.onlinestore.service.validate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Name validator
+ */
 public class NameValidator implements Validator {
     private static final String NAME = "^[A-ZА-Я]{1}[a-zа-я]{1,20}$";
 

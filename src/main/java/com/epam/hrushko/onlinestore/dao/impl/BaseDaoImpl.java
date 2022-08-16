@@ -5,13 +5,21 @@ import com.epam.hrushko.onlinestore.connection.MyConnection;
 import com.epam.hrushko.onlinestore.dao.aggregator.RowAggregator;
 import com.epam.hrushko.onlinestore.exceptions.ConnectionException;
 import com.epam.hrushko.onlinestore.exceptions.DaoException;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Base DAO for everything DAO. Contains CRUD
+ * @param <T>
+ */
 abstract public class BaseDaoImpl<T> {
+    private static final Logger LOGGER = LogManager.getLogger();
 
     protected Connection connection;
 
@@ -27,12 +35,19 @@ abstract public class BaseDaoImpl<T> {
              ResultSet resultSet = statement.executeQuery()) {
             entities = createList(resultSet);
         } catch (SQLException e) {
-            //logger
+            LOGGER.log(Level.ERROR, e.getMessage());
             throw new DaoException(e.getMessage(), e);
         }
         return entities;
     }
 
+    /**
+     * Find single result
+     * @param query
+     * @param params
+     * @return result or nothing
+     * @throws DaoException
+     */
     protected Optional<T> readForSingleResult(String query, Object... params) throws DaoException {
         List<T> items = read(query, params);
         if (items.isEmpty()) {
@@ -46,6 +61,13 @@ abstract public class BaseDaoImpl<T> {
         return Optional.of(items.get(0));
     }
 
+    /**
+     * Create new information
+     * @param query
+     * @param params
+     * @return
+     * @throws DaoException
+     */
     protected int create(String query, Object... params) throws DaoException {
         int ans = 0;
         try (PreparedStatement statement = createStatement(query, params)) {
@@ -55,17 +77,23 @@ abstract public class BaseDaoImpl<T> {
                 ans = generatedKey.getInt(1);
             }
         } catch (SQLException e) {
-            //logger
+            LOGGER.log(Level.ERROR, e.getMessage());
             throw new DaoException(e.getMessage(), e);
         }
         return ans;
     }
 
+    /**
+     * Update information
+     * @param query
+     * @param params
+     * @throws DaoException
+     */
     protected void update(String query, Object... params) throws DaoException {
         try (PreparedStatement statement = createStatement(query, params)) {
             statement.executeUpdate();
         } catch (SQLException e) {
-            //logger
+            LOGGER.log(Level.ERROR, e.getMessage());
             throw new DaoException(e.getMessage(), e);
         }
     }
@@ -80,7 +108,7 @@ abstract public class BaseDaoImpl<T> {
             ConnectionPool.getInstance().releaseConnection(connection);
             return preparedStatement;
         } catch (SQLException | ConnectionException e) {
-            //logger
+            LOGGER.log(Level.ERROR, e.getMessage());
             throw new DaoException(e.getMessage(), e);
         }
     }
@@ -93,12 +121,16 @@ abstract public class BaseDaoImpl<T> {
                 entities.add(entity);
             }
         } catch (SQLException e) {
-            //logger
+            LOGGER.log(Level.ERROR, e.getMessage());
             throw new DaoException(e.getMessage(), e);
         }
         return entities;
     }
 
+    /**
+     * Set connection
+     * @param connection
+     */
     public void setConnection(Connection connection) {
         this.connection = connection;
     }

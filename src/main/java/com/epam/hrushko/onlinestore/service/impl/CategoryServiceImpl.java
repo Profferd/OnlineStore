@@ -6,11 +6,24 @@ import com.epam.hrushko.onlinestore.entity.Category;
 import com.epam.hrushko.onlinestore.exceptions.DaoException;
 import com.epam.hrushko.onlinestore.exceptions.ServiceException;
 import com.epam.hrushko.onlinestore.service.CategoryService;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Category service
+ */
 public class CategoryServiceImpl implements CategoryService {
+    private static final Logger LOGGER = LogManager.getLogger();
+
+    /**
+     * Output all categories
+     * @return all categories
+     * @throws ServiceException
+     */
     @Override
     public List<Category> readCategories() throws ServiceException {
         try {
@@ -19,11 +32,17 @@ public class CategoryServiceImpl implements CategoryService {
             categories = categoryDao.read();
             return categories;
         } catch (DaoException e) {
-            //logger
+            LOGGER.log(Level.ERROR, e.getMessage());
             throw new ServiceException(e.getMessage(), e);
         }
     }
 
+    /**
+     * Find category using category id
+     * @param categoryId
+     * @return category
+     * @throws ServiceException
+     */
     @Override
     public Optional<Category> readCategoryById(int categoryId) throws ServiceException {
         try {
@@ -32,7 +51,7 @@ public class CategoryServiceImpl implements CategoryService {
             category = categoryDao.readById(categoryId);
             return category;
         } catch (DaoException e) {
-            //logger
+            LOGGER.log(Level.ERROR, e.getMessage());
             throw new ServiceException(e.getMessage(), e);
         }
     }

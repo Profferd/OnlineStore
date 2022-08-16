@@ -23,6 +23,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Class that show basket page
+ */
 public class BucketPageCommand implements Command {
     private static final String PAGE = "WEB-INF/view/bucket.jsp";
     private static final String ERROR_PAGE = "WEB-INF/view/error.jsp";
@@ -33,6 +36,13 @@ public class BucketPageCommand implements Command {
     private static final String TOTAL_COST = "totalCost";
     private static final String NEW_PRICES = "newPrice";
 
+    /**
+     * Executes basket page and show it
+     * Also show all product that was added there
+     * @param manager
+     * @param response
+     * @return Command Result
+     */
     @Override
     public CommandResult execute(RequestManager manager, HttpServletResponse response) {
         Requests requestContext = manager.createContext();

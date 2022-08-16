@@ -7,6 +7,9 @@ import com.epam.hrushko.onlinestore.exceptions.ServiceException;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * User information order interface
+ */
 public interface UserOrderService {
 
     Optional<UserOrder> readById(int userOrderId) throws ServiceException;

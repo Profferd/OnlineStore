@@ -3,6 +3,9 @@ package com.epam.hrushko.onlinestore.entity;
 import java.util.Date;
 import java.util.Objects;
 
+/**
+ * User order entity
+ */
 public class UserOrder {
     private int id;
     private String address;

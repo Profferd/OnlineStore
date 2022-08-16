@@ -2,6 +2,9 @@ package com.epam.hrushko.onlinestore.entity;
 
 import java.util.Objects;
 
+/**
+ * User information entity
+ */
 public class UserInfo {
     private int id;
     private String name;

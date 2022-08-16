@@ -24,9 +24,19 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * User service class
+ */
 public class UserServiceImpl implements UserService {
     private static final Logger LOGGER = LogManager.getLogger();
 
+    /**
+     * Logining
+     * @param email
+     * @param password
+     * @return successfully log in or not
+     * @throws ServiceException
+     */
     @Override
     public Optional<User> login(String email, String password) throws ServiceException {
         if (email == null || password == null) {
@@ -45,6 +55,16 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    /**
+     * Registration
+     * @param name
+     * @param surname
+     * @param email
+     * @param phone
+     * @param password
+     * @return successfully or not
+     * @throws ServiceException
+     */
     @Override
     public boolean register(String name, String surname, String email, String phone, String password) throws ServiceException {
         if (name == null || surname == null || email == null ||
@@ -79,7 +99,7 @@ public class UserServiceImpl implements UserService {
             userDao.create(user);
             return true;
         } catch (DaoException e) {
-            //logger
+            LOGGER.log(Level.ERROR, e.getMessage());
             throw new ServiceException(e.getMessage(), e);
         }
     }
@@ -92,7 +112,7 @@ public class UserServiceImpl implements UserService {
             ans = userDao.findById(userId);
             return ans;
         } catch (DaoException e) {
-            //logger
+            LOGGER.log(Level.ERROR, e.getMessage());
             throw new ServiceException(e.getMessage(), e);
         }
     }
@@ -111,7 +131,7 @@ public class UserServiceImpl implements UserService {
                 }
             }
         } catch (ServiceException e) {
-            //logger
+            LOGGER.log(Level.ERROR, e.getMessage());
             throw new ServiceException(e.getMessage(), e);
         }
         return users;

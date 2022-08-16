@@ -8,6 +8,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+/**
+ * Promotion service interface
+ */
 public interface PromotionService {
 
     List<Promotion> read() throws ServiceException;

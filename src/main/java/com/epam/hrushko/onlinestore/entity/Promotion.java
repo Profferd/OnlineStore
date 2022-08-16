@@ -3,6 +3,9 @@ package com.epam.hrushko.onlinestore.entity;
 import java.util.Date;
 import java.util.Objects;
 
+/**
+ * Promotion entity
+ */
 public class Promotion {
     private int id;
     private String name;

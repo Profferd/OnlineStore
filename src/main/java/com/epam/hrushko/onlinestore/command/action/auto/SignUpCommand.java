@@ -13,8 +13,11 @@ import org.apache.commons.codec.digest.DigestUtils;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Optional;
 
+/**
+ * Class that executing sign up command
+ */
 public class SignUpCommand implements Command {
-    private static final String LOG_UP_PAGE = "WEB-INF/view/signup.jsp";
+    private static final String SIGN_UP_PAGE = "WEB-INF/view/signup.jsp";
     private static final String ERROR_PAGE = "WEB-INF/view/error.jsp";
     private static final String EMAIL = "email";
     private static final String PASSWORD_FIRST = "password-first";
@@ -26,6 +29,14 @@ public class SignUpCommand implements Command {
     private static final String ERROR = "error";
     private static final String OK = "ok";
 
+    /**
+     * executing command
+     * if exist lack of information show error
+     * if all exist sign up
+     * @param manager
+     * @param response
+     * @return Command Result
+     */
     @Override
     public CommandResult execute(RequestManager manager, HttpServletResponse response) {
         Requests requestContext = manager.createContext();
@@ -53,6 +64,6 @@ public class SignUpCommand implements Command {
 
         requestContext.addRequestAttribute(MESSAGE, message);
         manager.updateRequest(requestContext);
-        return new CommandResult(LOG_UP_PAGE, CommandType.FORWARD);
+        return new CommandResult(SIGN_UP_PAGE, CommandType.FORWARD);
     }
 }

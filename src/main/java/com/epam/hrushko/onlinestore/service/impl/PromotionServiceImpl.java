@@ -9,13 +9,20 @@ import com.epam.hrushko.onlinestore.exceptions.ServiceException;
 import com.epam.hrushko.onlinestore.service.PromotionService;
 import com.epam.hrushko.onlinestore.service.validate.DiscoutValidate;
 import com.epam.hrushko.onlinestore.service.validate.Validator;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+/**
+ * Promotion service class
+ */
 public class PromotionServiceImpl implements PromotionService {
     private static final double HUNDRED_PERCENT = 100;
+    private static final Logger LOGGER = LogManager.getLogger();
 
     @Override
     public List<Promotion> read() throws ServiceException {
@@ -25,7 +32,7 @@ public class PromotionServiceImpl implements PromotionService {
             result = promotionDao.read();
             return result;
         } catch (DaoException e) {
-            //logger
+            LOGGER.log(Level.ERROR, e.getMessage());
             throw new ServiceException(e.getMessage(), e);
         }
     }
@@ -41,7 +48,7 @@ public class PromotionServiceImpl implements PromotionService {
             }
             return result;
         } catch (DaoException e) {
-            //logger
+            LOGGER.log(Level.ERROR, e.getMessage());
             throw new ServiceException(e.getMessage(), e);
         }
     }
@@ -107,7 +114,7 @@ public class PromotionServiceImpl implements PromotionService {
             promotionDao.create(promotion);
             return true;
         } catch (DaoException | ParseException e) {
-            //logger
+            LOGGER.log(Level.ERROR, e.getMessage());
             throw new ServiceException(e.getMessage(), e);
         }
     }

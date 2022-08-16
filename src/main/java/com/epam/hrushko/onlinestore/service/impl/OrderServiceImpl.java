@@ -12,12 +12,26 @@ import com.epam.hrushko.onlinestore.exceptions.DaoException;
 import com.epam.hrushko.onlinestore.exceptions.ServiceException;
 import com.epam.hrushko.onlinestore.service.OrderService;
 import com.epam.hrushko.onlinestore.service.PromotionService;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Order service class
+ */
 public class OrderServiceImpl implements OrderService {
+    private static final Logger LOGGER = LogManager.getLogger();
+
+    /**
+     * Find user by user id
+     * @param userId
+     * @return order
+     * @throws ServiceException
+     */
     @Override
     public List<Order> readByUser(int userId) throws ServiceException {
         try {
@@ -26,11 +40,17 @@ public class OrderServiceImpl implements OrderService {
             result = orderDao.readByUser(userId);
             return result;
         } catch (DaoException e) {
-            //logger
+            LOGGER.log(Level.ERROR, e.getMessage());
             throw new ServiceException(e.getMessage(), e);
         }
     }
 
+    /**
+     * Find orders by user order id
+     * @param userOrderId
+     * @return all orders
+     * @throws ServiceException
+     */
     @Override
     public List<Order> readByUserOrder(int userOrderId) throws ServiceException {
         try {
@@ -39,11 +59,17 @@ public class OrderServiceImpl implements OrderService {
             result = orderDao.readByUserOrder(userOrderId);
             return result;
         } catch (DaoException e) {
-            //logger
+            LOGGER.log(Level.ERROR, e.getMessage());
             throw new ServiceException(e.getMessage(), e);
         }
     }
 
+    /**
+     * Delete order by order id
+     * @param orderId
+     * @return true or false
+     * @throws ServiceException
+     */
     @Override
     public boolean delete(int orderId) throws ServiceException {
         try {
@@ -55,11 +81,19 @@ public class OrderServiceImpl implements OrderService {
             orderDao.delete(orderId);
             return true;
         } catch (DaoException e) {
-            //logger
+            LOGGER.log(Level.ERROR, e.getMessage());
             throw new ServiceException(e.getMessage(), e);
         }
     }
 
+    /**
+     * Create order
+     * @param userId
+     * @param productId
+     * @param number
+     * @return create or not
+     * @throws ServiceException
+     */
     @Override
     public boolean create(int userId, int productId, int number) throws ServiceException {
         try {
@@ -75,11 +109,17 @@ public class OrderServiceImpl implements OrderService {
             orderDao.create(order);
             return true;
         } catch (DaoException e) {
-            //logger
+            LOGGER.log(Level.ERROR, e.getMessage());
             throw new ServiceException(e.getMessage(), e);
         }
     }
 
+    /**
+     * Calculating total cost of products
+     * @param orders
+     * @return total cost
+     * @throws ServiceException
+     */
     @Override
     public double calculateTotalCost(List<Order> orders) throws ServiceException {
         double totalCost = 0;
@@ -106,11 +146,17 @@ public class OrderServiceImpl implements OrderService {
             }
             return totalCost;
         } catch (DaoException e) {
-            //logger
+            LOGGER.log(Level.ERROR, e.getMessage());
             throw new ServiceException(e.getMessage(), e);
         }
     }
 
+    /**
+     * Find all orders using user orders
+     * @param userOrders
+     * @return all orders
+     * @throws ServiceException
+     */
     @Override
     public List<Order> readOrders(List<UserOrder> userOrders) throws ServiceException {
         List<Order> orders = new LinkedList<>();

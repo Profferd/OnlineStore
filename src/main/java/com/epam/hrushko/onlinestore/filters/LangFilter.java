@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Map;
 
+/**
+ * Language filter class
+ */
 public class LangFilter implements Filter {
     private static final String LANGUAGE = "language";
     private static final String UA = "ua";

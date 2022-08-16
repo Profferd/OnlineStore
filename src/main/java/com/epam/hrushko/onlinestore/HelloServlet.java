@@ -6,12 +6,19 @@ import com.epam.hrushko.onlinestore.command.CommandResult;
 import com.epam.hrushko.onlinestore.command.request.RequestManager;
 import com.epam.hrushko.onlinestore.connection.ConnectionPool;
 import com.epam.hrushko.onlinestore.exceptions.ConnectionException;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.*;
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
 
+/**
+ * Main servlet
+ */
 public class HelloServlet extends HttpServlet {
+    private static final Logger LOGGER = LogManager.getLogger();
 
     private static final String COMMAND = "command";
     private static final String PATH = "/onlineStore?";
@@ -23,7 +30,7 @@ public class HelloServlet extends HttpServlet {
         try {
             ConnectionPool.getInstance().initialize();
         } catch (ConnectionException e) {
-            //logger
+            LOGGER.log(Level.ERROR, e.getMessage());
             throw new RuntimeException(e);
         }
     }
@@ -34,7 +41,7 @@ public class HelloServlet extends HttpServlet {
             ConnectionPool.getInstance().destroy();
             super.destroy();
         } catch (ConnectionException e) {
-            //logger
+            LOGGER.log(Level.ERROR, e.getMessage());
             throw new RuntimeException(e);
         }
     }

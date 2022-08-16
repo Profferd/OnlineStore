@@ -2,6 +2,9 @@ package com.epam.hrushko.onlinestore.entity;
 
 import java.util.Objects;
 
+/**
+ * Role entity
+ */
 public class Role {
     private int id;
     private String name;

@@ -21,6 +21,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Class that show catalog page
+ */
 public class CatalogPageCommand implements Command {
     private static final String PAGE = "WEB-INF/view/catalog.jsp";
     private static final String ERROR = "WEB-INF/view/error.jsp";
@@ -32,6 +35,13 @@ public class CatalogPageCommand implements Command {
     private static final String CUR_PAGE = "curPage";
     private static final int PRODUCT_BY_PAGE = 1;
 
+    /**
+     * Executes catalog page and show it
+     * Also shows all product that exist in catalog
+     * @param manager
+     * @param response
+     * @return Command Result
+     */
     @Override
     public CommandResult execute(RequestManager manager, HttpServletResponse response) {
         Requests requestContext = manager.createContext();
