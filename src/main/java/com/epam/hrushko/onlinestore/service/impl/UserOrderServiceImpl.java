@@ -12,9 +12,8 @@ import com.epam.hrushko.onlinestore.service.UserOrderService;
 import com.epam.hrushko.onlinestore.service.validate.MonthValidator;
 import com.epam.hrushko.onlinestore.service.validate.Validator;
 import com.epam.hrushko.onlinestore.service.validate.YearValidator;
-import org.apache.logging.log4j.Level;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -27,7 +26,7 @@ import java.util.Optional;
  * User order service class
  */
 public class UserOrderServiceImpl implements UserOrderService {
-    private static final Logger LOGGER = LogManager.getLogger();
+    private static final Logger LOGGER = Logger.getLogger(UserOrderServiceImpl.class);
     @Override
     public Optional<UserOrder> readById(int userOrderId) throws ServiceException {
         try {

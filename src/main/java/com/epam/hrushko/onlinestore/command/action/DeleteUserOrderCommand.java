@@ -11,12 +11,21 @@ import com.epam.hrushko.onlinestore.service.impl.UserOrderServiceImpl;
 
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * Class that allow administrators to cancel arrange from user
+ */
 public class DeleteUserOrderCommand implements Command {
     private static final String PAGE = "command=viewOrders";
     private static final String USER_ORDER_ID = "orderId";
     private static final String ERROR_PAGE = "WEB-INF/view/error.jsp";
     private static final String CANCELED = "canceled";
 
+    /**
+     * Executes and canceled user order
+     * @param helper
+     * @param response
+     * @return Command Result
+     */
     @Override
     public CommandResult execute(RequestManager helper, HttpServletResponse response) {
         Requests requestContext = helper.createContext();

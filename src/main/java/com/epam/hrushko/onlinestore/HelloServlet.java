@@ -6,9 +6,8 @@ import com.epam.hrushko.onlinestore.command.CommandResult;
 import com.epam.hrushko.onlinestore.command.request.RequestManager;
 import com.epam.hrushko.onlinestore.connection.ConnectionPool;
 import com.epam.hrushko.onlinestore.exceptions.ConnectionException;
-import org.apache.logging.log4j.Level;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 
 import java.io.*;
 import javax.servlet.ServletException;
@@ -18,7 +17,7 @@ import javax.servlet.http.*;
  * Main servlet
  */
 public class HelloServlet extends HttpServlet {
-    private static final Logger LOGGER = LogManager.getLogger();
+    private static final Logger LOGGER = Logger.getLogger(HelloServlet.class);
 
     private static final String COMMAND = "command";
     private static final String PATH = "/onlineStore?";

@@ -9,9 +9,8 @@ import com.epam.hrushko.onlinestore.exceptions.ServiceException;
 import com.epam.hrushko.onlinestore.service.PromotionService;
 import com.epam.hrushko.onlinestore.service.validate.DiscoutValidate;
 import com.epam.hrushko.onlinestore.service.validate.Validator;
-import org.apache.logging.log4j.Level;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -22,7 +21,7 @@ import java.util.*;
  */
 public class PromotionServiceImpl implements PromotionService {
     private static final double HUNDRED_PERCENT = 100;
-    private static final Logger LOGGER = LogManager.getLogger();
+    private static final Logger LOGGER = Logger.getLogger(PromotionServiceImpl.class);
 
     @Override
     public List<Promotion> read() throws ServiceException {

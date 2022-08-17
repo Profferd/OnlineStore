@@ -16,6 +16,9 @@ import com.epam.hrushko.onlinestore.service.impl.ProductServiceImpl;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Optional;
 
+/**
+ * Class that added product to the basket
+ */
 public class AddToBucketCommand implements Command {
     private static final String PAGE = "command=catalog";
     private static final String ERROR_PAGE = "WEB-INF/view/error.jsp";
@@ -27,6 +30,12 @@ public class AddToBucketCommand implements Command {
     private static final String OK = "ok";
     private static final String ERROR = "error";
 
+    /**
+     * Executes and adds product and its quantity to the basket
+     * @param manager
+     * @param response
+     * @return Command Result
+     */
     @Override
     public CommandResult execute(RequestManager manager, HttpServletResponse response) {
         Requests requestContext = manager.createContext();

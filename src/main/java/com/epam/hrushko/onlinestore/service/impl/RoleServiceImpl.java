@@ -6,9 +6,8 @@ import com.epam.hrushko.onlinestore.entity.Role;
 import com.epam.hrushko.onlinestore.exceptions.DaoException;
 import com.epam.hrushko.onlinestore.exceptions.ServiceException;
 import com.epam.hrushko.onlinestore.service.RoleService;
-import org.apache.logging.log4j.Level;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 
 import java.util.Optional;
 
@@ -16,7 +15,7 @@ import java.util.Optional;
  * Role service class
  */
 public class RoleServiceImpl implements RoleService {
-    private static final Logger LOGGER = LogManager.getLogger();
+    private static final Logger LOGGER = Logger.getLogger(RoleServiceImpl.class);
 
     /**
      * Find Role by od

@@ -11,10 +11,20 @@ import com.epam.hrushko.onlinestore.service.impl.OrderServiceImpl;
 
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * Class that allow to delete order from basket
+ */
 public class DeleteOrderCommand implements Command {
     private static final String PAGE = "command=basket";
     private static final String ERROR_PAGE = "WEB-INF/view/error.jsp";
     private static final String ORDER_ID = "orderId";
+
+    /**
+     * Executes and delete order from basket by user
+     * @param manager
+     * @param response
+     * @return Command Result
+     */
     @Override
     public CommandResult execute(RequestManager manager, HttpServletResponse response) {
         Requests requestContext = manager.createContext();

@@ -9,6 +9,9 @@ import com.epam.hrushko.onlinestore.exceptions.DaoException;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Class that contain all DAO for user order id
+ */
 public class UserOrderDaoImpl extends BaseDaoImpl implements UserOrderDao {
     private static final String READ = "SELECT * FROM `userOrder`";
     private static final String READ_BY_STATUS = "SELECT * FROM `userOrder` WHERE `status`=?";
@@ -21,11 +24,22 @@ public class UserOrderDaoImpl extends BaseDaoImpl implements UserOrderDao {
         super(RowFactory.getInstance().getUserOrderRows());
     }
 
+    /**
+     * Find all user order from database
+     * @return list of user order
+     * @throws DaoException
+     */
     @Override
     public List<UserOrder> read() throws DaoException {
         return read(READ);
     }
 
+    /**
+     *
+     * @param item
+     * @return
+     * @throws DaoException
+     */
     @Override
     public int create(UserOrder item) throws DaoException {
         return create(CREATE, item.getAddress(), item.getOrderDate(),

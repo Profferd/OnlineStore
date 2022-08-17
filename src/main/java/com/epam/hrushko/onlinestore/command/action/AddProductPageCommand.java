@@ -25,7 +25,7 @@ public class AddProductPageCommand implements Command {
      * Executes and show product adding page for administrator
      * @param manager
      * @param response
-     * @return
+     * @return Command Result
      */
     @Override
     public CommandResult execute(RequestManager manager, HttpServletResponse response) {

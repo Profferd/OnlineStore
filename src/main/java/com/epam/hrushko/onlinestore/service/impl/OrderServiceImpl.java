@@ -12,9 +12,8 @@ import com.epam.hrushko.onlinestore.exceptions.DaoException;
 import com.epam.hrushko.onlinestore.exceptions.ServiceException;
 import com.epam.hrushko.onlinestore.service.OrderService;
 import com.epam.hrushko.onlinestore.service.PromotionService;
-import org.apache.logging.log4j.Level;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -24,7 +23,7 @@ import java.util.Optional;
  * Order service class
  */
 public class OrderServiceImpl implements OrderService {
-    private static final Logger LOGGER = LogManager.getLogger();
+    private static final Logger LOGGER = Logger.getLogger(OrderServiceImpl.class);
 
     /**
      * Find user by user id

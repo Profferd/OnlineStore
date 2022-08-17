@@ -12,6 +12,9 @@ import com.epam.hrushko.onlinestore.service.impl.ProductServiceImpl;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Optional;
 
+/**
+ * Class that complete adding of product by administrator
+ */
 public class ConfirmAddingProductCommand implements Command {
     private static final String PAGE = "command=addProduct";
     private static final String ERROR_PAGE = "WEB-INF/view/error.jsp";
@@ -25,6 +28,13 @@ public class ConfirmAddingProductCommand implements Command {
     private static final String ERROR = "error";
     private static final String OK = "ok";
 
+    /**
+     * Executes and take all information from site and place it to database
+     * administrator only
+     * @param manager
+     * @param response
+     * @return Command Result
+     */
     @Override
     public CommandResult execute(RequestManager manager, HttpServletResponse response) {
         Requests requestContext = manager.createContext();

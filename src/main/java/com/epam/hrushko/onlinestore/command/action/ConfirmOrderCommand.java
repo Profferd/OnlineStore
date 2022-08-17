@@ -17,6 +17,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Class that allow to arrange order
+ */
 public class ConfirmOrderCommand implements Command {
     private static final String ADD_ORDER_PAGE = "WEB-INF/view/addOrder.jsp";
     private static final String ORDERS_PAGE = "command=myOrders";
@@ -27,6 +30,12 @@ public class ConfirmOrderCommand implements Command {
     private static final String USER = "user";
     private static final String TOTAL_COST = "totalCost";
 
+    /**
+     * Executes and take important information from site and send request to administrator to approve arrange
+     * @param manager
+     * @param response
+     * @return
+     */
     @Override
     public CommandResult execute(RequestManager manager, HttpServletResponse response) {
         Requests requestContext = manager.createContext();

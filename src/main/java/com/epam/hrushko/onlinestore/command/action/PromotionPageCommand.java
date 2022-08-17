@@ -25,7 +25,7 @@ public class PromotionPageCommand implements Command {
     public static final String NUMBER_OF_PAGES = "nuPages";
     public static final String CURRENT_PAGE = "page";
     public static final String GO_TO_PAGE = "goToPage";
-    private static final int RECORDS_PER_PAGE = 1;
+    private static final int RECORDS_PER_PAGE = 2;
 
     @Override
     public CommandResult execute(RequestManager manager, HttpServletResponse response) {

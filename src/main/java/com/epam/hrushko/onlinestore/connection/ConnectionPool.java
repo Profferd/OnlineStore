@@ -1,9 +1,8 @@
 package com.epam.hrushko.onlinestore.connection;
 
 import com.epam.hrushko.onlinestore.exceptions.ConnectionException;
-import org.apache.logging.log4j.Level;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 
 import java.io.IOException;
 import java.util.Properties;
@@ -11,7 +10,7 @@ import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 
 public class ConnectionPool {
-    private static final Logger LOGGER = LogManager.getLogger();
+    private static final Logger LOGGER = Logger.getLogger(ConnectionPool.class);
     private static final String POOL_SIZE = "db.poolsize";
     private static final String DB_CONNECTION_PATH = "connection/db.properties";
 

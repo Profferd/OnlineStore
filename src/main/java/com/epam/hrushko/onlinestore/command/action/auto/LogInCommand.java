@@ -13,9 +13,8 @@ import com.epam.hrushko.onlinestore.service.UserService;
 import com.epam.hrushko.onlinestore.service.impl.RoleServiceImpl;
 import com.epam.hrushko.onlinestore.service.impl.UserServiceImpl;
 import org.apache.commons.codec.digest.DigestUtils;
-import org.apache.logging.log4j.Level;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServletResponse;
 import java.util.Optional;
@@ -24,7 +23,7 @@ import java.util.Optional;
  * Class that execute log in command
  */
 public class LogInCommand implements Command {
-    private static final Logger LOGGER = LogManager.getLogger();
+    private static final Logger LOGGER = Logger.getLogger(LogInCommand.class);
 
     private static final String HOME = "command=home";
     private static final String ERROR_PAGE = "WEB-INF/view/error.jsp";
@@ -59,7 +58,8 @@ public class LogInCommand implements Command {
                 RoleService roleService = new RoleServiceImpl();
                 Optional<Role> role = roleService.findById(optionalResult.get().getRoleId());
                 role.ifPresent(value -> requestContext.addSessionAttribute(ROLE, value));
-
+                LOGGER.log(Level.INFO, "OK");
+                LOGGER.info("OK");
                 manager.updateRequest(requestContext);
                 return new CommandResult(HOME, CommandType.REDIRECT);
             }

@@ -13,6 +13,9 @@ import com.epam.hrushko.onlinestore.service.impl.ProductServiceImpl;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Optional;
 
+/**
+ * Class that allow to edit product
+ */
 public class ConfirmEditProductCommand implements Command {
     private static final String PAGE = "command=catalog";
     private static final String CATEGORY_PARAMETER = "&categoryId=";
@@ -26,6 +29,13 @@ public class ConfirmEditProductCommand implements Command {
     private static final String AVAILABILITY = "availability";
     private static final String PRODUCT_ID = "productId";
 
+    /**
+     * Execute and take all information from site and update it in database
+     * Administrator only
+     * @param manager
+     * @param response
+     * @return
+     */
     @Override
     public CommandResult execute(RequestManager manager, HttpServletResponse response) {
         Requests requestContext = manager.createContext();

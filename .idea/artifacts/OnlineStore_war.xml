@@ -9,6 +9,7 @@
     </properties>
     <root id="archive" name="OnlineStore-1.0-SNAPSHOT.war">
       <element id="artifact" artifact-name="OnlineStore:war exploded" />
+      <element id="library" level="project" name="Maven: log4j:log4j:1.2.17" />
     </root>
   </artifact>
 </component>

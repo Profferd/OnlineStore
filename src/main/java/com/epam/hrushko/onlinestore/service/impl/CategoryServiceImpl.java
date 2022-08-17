@@ -6,9 +6,8 @@ import com.epam.hrushko.onlinestore.entity.Category;
 import com.epam.hrushko.onlinestore.exceptions.DaoException;
 import com.epam.hrushko.onlinestore.exceptions.ServiceException;
 import com.epam.hrushko.onlinestore.service.CategoryService;
-import org.apache.logging.log4j.Level;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 
 import java.util.List;
 import java.util.Optional;
@@ -17,7 +16,7 @@ import java.util.Optional;
  * Category service
  */
 public class CategoryServiceImpl implements CategoryService {
-    private static final Logger LOGGER = LogManager.getLogger();
+    private static final Logger LOGGER = Logger.getLogger(CategoryServiceImpl.class);
 
     /**
      * Output all categories

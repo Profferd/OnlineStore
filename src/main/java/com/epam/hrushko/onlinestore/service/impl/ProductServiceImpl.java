@@ -14,9 +14,8 @@ import com.epam.hrushko.onlinestore.service.ProductService;
 import com.epam.hrushko.onlinestore.service.validate.IdValidator;
 import com.epam.hrushko.onlinestore.service.validate.PriceValidator;
 import com.epam.hrushko.onlinestore.service.validate.Validator;
-import org.apache.logging.log4j.Level;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -26,7 +25,7 @@ import java.util.Optional;
  * Product service class
  */
 public class ProductServiceImpl implements ProductService {
-    private static final Logger LOGGER = LogManager.getLogger();
+    private static final Logger LOGGER = Logger.getLogger(ProductServiceImpl.class);
 
     /**
      * Find product by category id

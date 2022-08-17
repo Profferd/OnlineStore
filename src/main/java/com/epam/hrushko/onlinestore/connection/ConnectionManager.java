@@ -1,9 +1,8 @@
 package com.epam.hrushko.onlinestore.connection;
 
 import com.epam.hrushko.onlinestore.exceptions.ConnectionException;
-import org.apache.logging.log4j.Level;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -13,7 +12,7 @@ import java.util.Properties;
  * Connection manager which contain all information about database and connecting to it
  */
 public class ConnectionManager {
-    private static final Logger LOGGER = LogManager.getLogger();
+    private static final Logger LOGGER = Logger.getLogger(ConnectionManager.class);
     private static final String DB_URL = "db.url";
     private static final String DB_USER = "db.user";
     private static final String DB_PASSWORD = "db.password";

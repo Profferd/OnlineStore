@@ -16,9 +16,8 @@ import com.epam.hrushko.onlinestore.service.validate.EmailValidator;
 import com.epam.hrushko.onlinestore.service.validate.NameValidator;
 import com.epam.hrushko.onlinestore.service.validate.PhoneValidator;
 import com.epam.hrushko.onlinestore.service.validate.Validator;
-import org.apache.logging.log4j.Level;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -28,7 +27,7 @@ import java.util.Optional;
  * User service class
  */
 public class UserServiceImpl implements UserService {
-    private static final Logger LOGGER = LogManager.getLogger();
+    private static final Logger LOGGER = Logger.getLogger(UserServiceImpl.class);
 
     /**
      * Logining

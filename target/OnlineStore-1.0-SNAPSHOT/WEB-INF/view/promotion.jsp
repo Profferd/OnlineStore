@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="p" uri="/WEB-INF/view/tld/sort.tld" %>
 <html>
 <head>
     <jsp:include page="base/header.jsp"/>
@@ -17,6 +18,59 @@
 <fmt:setLocale value="${sessionScope.language}"/>
 <fmt:setBundle basename="textResources.textResources" var="local"/>
 <div class="container">
+    <c:choose>
+        <c:when test="${sessionScope.sort == 'asc'}">
+            <li class="nav-item">
+                <a class="nav-link active"
+                   href="${pageContext.request.contextPath}/onlineStore?${pageContext.request.queryString}&sort=asc">
+                    <fmt:message bundle="${local}" key="sort.asc"/>
+                    <c:forEach items="${p:sortByName(promotion)}" var="promotions"/>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link"
+                   href="${pageContext.request.contextPath}/onlineStore?${pageContext.request.queryString}&sort=percent">
+                    <fmt:message bundle="${local}" key="sort.fhtl"/>
+                    <c:forEach items="${p:sortByName(promotion)}" var="promotions"/>
+                </a>
+            </li>
+        </c:when>
+        <c:when test="${sessionScope.sort=='percent'}">
+            <li class="nav-item">
+                <a class="nav-link"
+                   href="${pageContext.request.contextPath}/onlineStore?${pageContext.request.queryString}&sort=asc">
+                    <fmt:message bundle="${local}" key="sort.asc"/>
+                    <c:forEach items="${p:sortByPercent(promotion)}" var="promotions"/>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active"
+                   href="${pageContext.request.contextPath}/onlineStore?${pageContext.request.queryString}&sort=percent">
+                    <fmt:message bundle="${local}" key="sort.fhtl"/>
+                    <c:forEach items="${p:sortByPercent(promotion)}" var="promotions"/>
+                </a>
+            </li>
+        </c:when>
+    </c:choose>
+
+<%--    <li class="nav-item dropdown">--%>
+<%--        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"--%>
+<%--           aria-haspopup="true" aria-expanded="false">--%>
+<%--            <fmt:message bundle="${local}" key="sort.choose"/>--%>
+<%--        </a>--%>
+<%--        <div class="dropdown-menu">--%>
+<%--                <a class="dropdown-item" href="${pageContext.request.contextPath}/onlineStore?command=promotions&sort=a-z">--%>
+<%--                        <fmt:message bundle="${local}" key="sort.asc"/>--%>
+<%--                    <c:forEach items="${p:sortByName(promotion)}" var="promotions">--%>
+<%--                        <a href="${pageContext.request.contextPath}/onlineStore?command=promotions&sort=a-z></a>--%>
+<%--                    </c:forEach>--%>
+<%--                </a>--%>
+<%--                <a class="dropdown-item" href="${pageContext.request.contextPath}/onlineStore?command=promotions&sort=asc">--%>
+<%--                    <fmt:message bundle="${local}" key="sort.fhtl"/>--%>
+<%--&lt;%&ndash;                    <c:forEach items="${p:sortByPercent(promotion)}" var="promotions"/>&ndash;%&gt;--%>
+<%--                </a>--%>
+<%--        </div>--%>
+<%--    </li>--%>
     <c:forEach var="promotion" items="${promotion}">
         <div class="my-lg-4">
             <div class="col-6"></div>
@@ -61,4 +115,5 @@
     <p class="text-secondary">* <fmt:message bundle="${local}" key="promotion.note"/></p>
 </div>
 </body>
+
 </html>
